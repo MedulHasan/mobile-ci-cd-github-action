@@ -1,0 +1,16 @@
+name: First Build
+on: [push]
+jobs:
+  Build-Android-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v5
+      - name: Install Dependency
+        run: yarn install --frozen-lockfile
+      - name: Code Lint
+        run: yarn lint
+      - name: Build APK
+        run: cd android && ./gradlew assembleRelease && cd ..
+      - name: Complete BUild
+        run: echo "Build completed"
