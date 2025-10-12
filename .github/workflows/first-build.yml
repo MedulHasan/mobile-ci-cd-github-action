@@ -19,11 +19,14 @@ jobs:
       - name: Complete BUild
         run: echo "Build completed"
 
+      - name: Create path
+        run: mkdir -p path/to/artifact
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: upload apk artiface
-          path: android/app/build/outputs/apk/release/app-release.apk
+          path: path/to/artifact/app-release.apk
   deploy:
     needs: Build-Android-apk
     runs-on: ubuntu-latest
