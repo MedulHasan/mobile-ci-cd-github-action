@@ -6,19 +6,24 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v5
+
       - name: Install Dependency
         run: yarn install --frozen-lockfile
+
       - name: Code Lint
         run: yarn lint
+
       - name: Build APK
         run: cd android && ./gradlew assembleRelease && cd ..
+
       - name: Complete BUild
         run: echo "Build completed"
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: upload apk artiface
-          path: dist
+          path: android/app/build/outputs/apk/release/app-release.apk
   deploy:
     needs: Build-Android-apk
     runs-on: ubuntu-latest
