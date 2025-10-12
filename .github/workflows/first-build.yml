@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: upload apk artiface
-          path: path/android/output
+          path: dist
   deploy:
     needs: Build-Android-apk
     runs-on: ubuntu-latest
