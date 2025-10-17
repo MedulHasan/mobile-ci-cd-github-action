@@ -31,7 +31,7 @@ jobs:
       - name: Get build artifacts
         uses: actions/download-artifact@v5
         with:
-          name: app-release-apk
+          name: app-release.apk
           path: ./apk
       - name: Show downloaded file
         run: ls -R ./apk
