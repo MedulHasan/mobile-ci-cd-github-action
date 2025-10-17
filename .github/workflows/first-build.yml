@@ -31,8 +31,9 @@ jobs:
       - name: Get build artifacts
         uses: actions/download-artifact@v5
         with:
-          name: apk-file
-      - name: output contents
-        run: ls
+          name: app-release-apk
+          path: ./apk
+      - name: Show downloaded file
+        run: ls -R ./apk
       - name: Deploy
         run: echo "Deploying..."
