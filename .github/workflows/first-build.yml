@@ -33,7 +33,16 @@ jobs:
         with:
           name: app-release-apk
           path: ./apk
-      - name: Show downloaded file
-        run: ls -R ./apk
+      - name: Create GitHub Release and upload APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: 'Android Release ${{ github.ref_name }}'
+          body: |
+            🎉 New Android release build
+            Built automatically from commit: ${{ github.sha }}
+          files: ./apk/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy
         run: echo "Deploying..."
