@@ -1,5 +1,9 @@
 name: First Build
 on: [push]
+
+permissions:
+  contents: write
+
 jobs:
   Build-Android-apk:
     runs-on: ubuntu-latest
@@ -42,6 +46,7 @@ jobs:
             🎉 New Android release build
             Built automatically from commit: ${{ github.sha }}
           files: ./apk/app-release.apk
+          overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Deploy
