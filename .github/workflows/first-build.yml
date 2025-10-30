@@ -22,9 +22,12 @@ jobs:
       - name: Build APK
         run: cd android && ./gradlew assembleRelease && cd ..
 
+      - name: check file path
+        run: ls -R
+
       - name: Publish apk file name as output
         id: output-name
-        run: find android/app/build/outputs/apk/release/*.apk -type f -execdir echo 'apk-file{}' >> $GITHUB_OUTPUT ';'
+        run: find android/app/build/outputs/apk/release/app-release.apk -type f -execdir echo 'apk-file{}' >> $GITHUB_OUTPUT ';'
 
       - name: Complete BUild
         run: echo "Build completed"
@@ -38,7 +41,7 @@ jobs:
     needs: Build-Android-apk
     runs-on: ubuntu-latest
     steps:
-      - name: Get build artifacts
+      - name: Download build artifacts
         uses: actions/download-artifact@v5
         with:
           name: app-release-apk
