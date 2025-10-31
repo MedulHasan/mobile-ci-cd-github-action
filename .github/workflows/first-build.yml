@@ -27,7 +27,8 @@ jobs:
 
       - name: Publish apk file name as output
         id: output-name
-        run: find android/app/build/outputs/apk/release/app-release.apk -type f -execdir echo 'apk-file{}' >> $GITHUB_OUTPUT ';'
+        run: |
+          echo "apk-file=$(find android/app/build/outputs/apk/release -type f -name '*.apk')" >> $GITHUB_OUTPUT
 
       - name: Complete BUild
         run: echo "Build completed"
