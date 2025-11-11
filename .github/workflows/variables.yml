@@ -11,7 +11,7 @@ jobs:
 
     env:
       Greeting: Hello
-      SUPER_SECRET: ${{ secrets.SuperSecret }}
+      SUPER_SECRET: ${{ secrets.SUPERSECRET }}
 
     steps:
       - name: "Say Hello Mona it's Monday"
