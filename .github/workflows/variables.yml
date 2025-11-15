@@ -3,7 +3,7 @@ name: Check variables
 on: [push]
 
 env:
-  DAY_OF_WEEK: Monday
+  DAY_OF_WEEK: Saturday
   First_Name: Medul
 
 jobs:
