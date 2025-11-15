@@ -19,3 +19,7 @@ jobs:
         run: |
           echo "$Greeting ${{ env.First_Name }}. Today is $DAY_OF_WEEK! $GITHUB_ACTION"
           echo example-command "$SUPER_SECRET"
+      - name: "conditional statement"
+        if: ${{ env.DAY_OF_WEEK == 'Monday' }}
+        run: echo "My Name is $First_Name"
+
