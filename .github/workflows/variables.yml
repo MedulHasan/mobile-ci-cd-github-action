@@ -4,6 +4,7 @@ on: [push]
 
 env:
   DAY_OF_WEEK: Monday
+  First_Name: Medul
 
 jobs:
   Variable-Check:
@@ -16,5 +17,5 @@ jobs:
     steps:
       - name: "Say Hello Mona it's Monday"
         run: |
-          echo "$Greeting $First_Name. Today is $DAY_OF_WEEK! $GITHUB_ACTION"
+          echo "$Greeting ${{ env.First_Name }}. Today is $DAY_OF_WEEK! $GITHUB_ACTION"
           echo example-command "$SUPER_SECRET"
