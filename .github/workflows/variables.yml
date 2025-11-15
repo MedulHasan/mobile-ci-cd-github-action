@@ -22,4 +22,6 @@ jobs:
       - name: "conditional statement"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: echo "My Name is $First_Name"
+      - name: "End"
+        run: echo "The End"
 
