@@ -21,7 +21,7 @@ jobs:
             exit 1
 
         - name: step C
-          if: failure() && ${{ steps.step-b.outcome == 'failur' }}
+          if: failure() && ${{ steps.step-b.outcome == 'failure' }}
           run: echo "Step C" 
     jobB:
       needs: [jobA]
