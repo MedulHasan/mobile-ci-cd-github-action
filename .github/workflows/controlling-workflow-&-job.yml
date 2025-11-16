@@ -17,12 +17,11 @@ jobs:
         - name: step B
           id: step-b
           run: |
-            echo "steps.step-b.outcome ${{ steps.step-b.outcome }}"
             test 1 -eq 2
 
         - name: step C
           if: failure() && steps.step-b.outcome == 'failure'
-          run: echo "Step C" 
+          run: echo "Step C ${{ steps.step-b.outcome }}" 
     jobB:
       needs: [jobA]
       runs-on: ubuntu-latest
