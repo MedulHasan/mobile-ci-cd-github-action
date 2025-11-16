@@ -28,7 +28,7 @@ jobs:
         - name: step C
           run: echo 'step C'
     job1D:
-      needs: [job1, jobC]
+      needs: [jobC]
       runs-on: ubuntu-latest
       steps:
         - name: step 1D
