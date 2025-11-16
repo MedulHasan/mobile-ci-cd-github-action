@@ -1,0 +1,27 @@
+name: Controlling workflow and job execution
+
+on: [push]
+
+jobs:
+    job1:   
+        runs-on: ubuntu-latest
+        steps:
+            - name: step 1
+              run: echo "step 1"
+    jobA:
+      runs-on: ubuntu-latest
+      steps: 
+        - name: step A
+          run: echo "Step A"
+    jobB:
+      needs: [jobA]
+      runs-on: ubuntu-latest
+      steps:
+        - name: step B
+          run: echo 'step B'
+    jobC:
+      needs: [jobB]
+      runs-on: ubuntu-latest
+      steps:
+        - name: step C
+          run: echo 'step C'
