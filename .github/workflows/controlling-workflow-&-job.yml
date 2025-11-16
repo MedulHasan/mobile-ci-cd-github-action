@@ -36,7 +36,7 @@ jobs:
           run: echo 'step C'
     deploy:
       needs: [jobC]
-      uses: ./,guthub/workflows/reusable.yml
+      uses: ./.guthub/workflows/reusable.yml
     report:
       needs: [job1, jobC]
       if: failure()
