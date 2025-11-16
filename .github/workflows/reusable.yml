@@ -1,8 +1,15 @@
 name: Reusabe workflow
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      input-name:
+        description: The name of the deployable artifact files
+        required: false
+        default: reusable
+        type: string
 jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-            - name: output information
+            - name: output information ${{ inputs.input-name }}
               run: echo "deployed"

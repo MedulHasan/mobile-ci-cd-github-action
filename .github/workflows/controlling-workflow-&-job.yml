@@ -31,6 +31,8 @@ jobs:
     jobC:
       needs: [jobB]
       uses: ./.github/workflows/reusable.yml
+      with:
+        input-name: Medul
     report:
       needs: [job1, jobC]
       if: failure()
