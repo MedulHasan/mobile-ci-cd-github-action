@@ -17,7 +17,7 @@ jobs:
         - name: step B
           id: step-b
           run: |
-            test 1 -eq 2
+            test 1 -eq 1
 
         - name: step C
           if: failure() && steps.step-b.outcome == 'failure'
@@ -34,6 +34,9 @@ jobs:
       steps:
         - name: step C
           run: echo 'step C'
+    deploy:
+      needs: [jobC]
+      uses: ./,guthub/workflows/reusable.yml
     report:
       needs: [job1, jobC]
       if: failure()
