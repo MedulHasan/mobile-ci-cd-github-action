@@ -20,7 +20,7 @@ jobs:
             test 1 -eq 2
 
         - name: step C
-          if: failure() && steps.step-b.outcome == 'failure'
+          if: failure() && ${{steps.step-b.outcome}} == 'failure'
           run: echo "Step C ${{ steps.step-b.outcome }}" 
     jobB:
       needs: [jobA]
