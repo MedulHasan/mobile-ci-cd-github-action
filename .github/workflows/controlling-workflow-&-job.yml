@@ -16,11 +16,10 @@ jobs:
 
         - name: step B
           id: step-b
-          run: |
-            test 1 -eq 2
+          run: test 1 -eq 2
 
         - name: step C
-          if: failure() && ${{ steps.step-b.outcome == 'failure' }}
+          if: failure() && steps.step-b.outcome == 'failure'
           run: echo "Step C" 
     jobB:
       needs: [jobA]
