@@ -12,9 +12,17 @@ jobs:
       runs-on: ubuntu-latest
       steps: 
         - name: step A
+          run: echo "Step A"
+
+        - name: step B
+          id: step-b
           run: |
-            echo "Step A"
+            echo "Step B"
             exit 1
+
+        - name: step C
+          if: ${{ steps.step-b.outcome == 'failur' }}
+          run: echo "Step C" 
     jobB:
       needs: [jobA]
       runs-on: ubuntu-latest
