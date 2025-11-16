@@ -30,12 +30,6 @@ jobs:
           run: echo 'step B'
     jobC:
       needs: [jobB]
-      runs-on: ubuntu-latest
-      steps:
-        - name: step C
-          run: echo 'step C'
-    deploy:
-      needs: [jobC]
       uses: ./.github/workflows/reusable.yml
     report:
       needs: [job1, jobC]
