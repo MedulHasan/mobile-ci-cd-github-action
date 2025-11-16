@@ -16,8 +16,10 @@ jobs:
 
         - name: step B
           id: step-b
+          continue-on-error: true
           run: |
-            echo Step B
+            echo "Step B"
+            exit 1
 
         - name: step C
           if: failure() && ${{ steps.step-b.outcome == 'failure' }}
