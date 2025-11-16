@@ -20,7 +20,7 @@ jobs:
             test 1 -eq 2
 
         - name: step C
-          if: steps.step-b.outcome == 'failure'
+          if: failure() && steps.step-b.outcome == 'failure'
           run: echo "Step C" 
     jobB:
       needs: [jobA]
@@ -34,8 +34,9 @@ jobs:
       steps:
         - name: step C
           run: echo 'step C'
-    job1D:
-      needs: [jobC]
+    report:
+      needs: [job1, jobC]
+      if: failure()
       runs-on: ubuntu-latest
       steps:
         - name: step 1D
