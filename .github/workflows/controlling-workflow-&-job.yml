@@ -12,7 +12,9 @@ jobs:
       runs-on: ubuntu-latest
       steps: 
         - name: step A
-          run: echo "Step A"
+          run: |
+            echo "Step A"
+            exit 1
     jobB:
       needs: [jobA]
       runs-on: ubuntu-latest
